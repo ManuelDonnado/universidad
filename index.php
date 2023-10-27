@@ -20,6 +20,13 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
             break;
     }
 
+
+    if (end($partes) === "view_alumnos") {
+        $controller->addAlumno($_POST);
+        die();
+    }
+
+
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "GET"){

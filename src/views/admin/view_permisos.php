@@ -39,7 +39,7 @@ $user = $_SESSION["user"];
             </div>
 
             <div class="flex flex-col m-3 text-[12px] text-white " >
-            <a href="./view_permisos.php"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
+                <a href="./view_permisos.php"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
                 <a href="./view_maestros.php"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
                 <a href="./view_alumnos.php">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
                 <a href="./view_materias.php"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
@@ -104,10 +104,10 @@ $user = $_SESSION["user"];
     
                 <div class="flex flex-row justify-between m-10" >
                     <div>
-                    <p>Lista de Alumnos </p>
+                    <p>Lista de Permisos </p>
                     </div>
                     <div class="flex flex-row" >
-                    <a href="../dashboard.php">Home</a> <p>/ Alumnos</p> 
+                    <a href="../dashboard.php">Home</a> <p>/ Permisos</p> 
                     </div>
                 </div>
             
@@ -115,85 +115,12 @@ $user = $_SESSION["user"];
             <div>
                 <div class="flex flex-row justify-between mx-5 p-3">
                     <div class="mx-6 my-4" >
-                         <p>Información de Alumnos</p>
+                         <p>Información de Permisos</p>
                     </div>
                     <div class="mx-6 my-4">
-                        <a href="#"  id="openModal" class="text-blue-500" > Agregar Alumno</a>
+                        <a href="#"></a>
                     </div>   
                 </div>
-
-                <!-- codigo de modal de insertar alumno -->
-                <div id="myModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
-                    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-                    <div class="modal-container bg-white w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 2xl:w-1/2 mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                        <div class="modal-content py-4 text-left px-6">
-        
-                            <div class="flex justify-between items-center pb-3 ">
-                                <h1 class="text-3xl mb-6">Registrar Nuevo Alumno</h1>
-                                <div id="closeModal" class="modal-close cursor-pointer z-50">
-                                    &times;
-                                </div>
-                            </div>
-                        <form action="/index.php/view_alumnos" method="post"  class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
-                        <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Matricula:</label>
-                            <input type="text" name="matricula" class="w-[50%] ">
-                            </div>
-
-                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Nombre:</label>
-                            <input type="text" name="nombre" class="w-[50%] ">
-                            </div>
-
-                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Apellido:</label>
-                            <input type="text" name="apellido" class="w-[50%] ">
-                            </div>
-                        
-                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Correo:</label>
-                            <input type="text" name="correo" class="w-[50%] ">
-                            </div>
-                        
-
-                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                                <label for="">Contraseña:</label>
-                                <input type="password" name="password" class="w-[50%]">
-                            </div>
-
-                    
-                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                                <label for="">Dirección:</label>
-                                <input type="text" name="direccion" class="w-[50%]" > </input>
-                            </div>
-                            
-                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                                <label for="">Fecha de Nacimiento:</label>
-                                <input type="date" name="fecha_nacimiento" class="w-[50%]" > </input>
-                            </div>
-
-                            <div class="self-center">
-                                <button type="submit" class="px-2 py-1 rounded-md text-white mb-6 inline-block hover:text-black bg-slate-500">Guardar</button>
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                    // Abre el modal al hacer clic en el enlace
-                    document.getElementById('openModal').addEventListener('click', function () {
-                        document.getElementById('myModal').classList.remove('hidden');
-                    });
-
-                    // Cierra el modal al hacer clic en la "x" o en el fondo oscuro
-                    document.getElementById('closeModal').addEventListener('click', function () {
-                        document.getElementById('myModal').classList.add('hidden');
-                    });
-                    document.querySelector('.modal-overlay').addEventListener('click', function () {
-                        document.getElementById('myModal').classList.add('hidden');
-                    });
-                    </script>
                 <hr>
                 <div class="flex flex-row justify-between mx-5 p-3">
                     <div>
@@ -211,28 +138,15 @@ $user = $_SESSION["user"];
                     <thead>    
                         <tr>
                             <td> # </td>
-                            <td>Matricula</td>
-                            <td> Nombre </td>
-                            <td> Correo </td>
-                            <td> Dirección </td>
-                            <td> Fecha de Nacimiento </td>
+                            <td>Email / Usuario</td>
+                            <td> Permiso </td>
+                            <td> Estado </td>
                             <td> Acciones </td>
                         </tr>
                     </thead>    
                     <tbody>
-                    <?php
-        foreach ($data as $alumno) { ?>
-            <tr>
-                <td><?php echo $alumno['id_usuario']; ?></td>
-                <td><?php echo $alumno['matricula']; ?></td>
-                <td><?php echo $alumno['nombre']; ?></td>
-                <td><?php echo $alumno['correo']; ?></td>
-                <td><?php echo $alumno['direccion']; ?></td>
-                <td><?php echo $alumno['fecha_nacimiento']; ?></td>
-                <td>Acciones</td> <!-- Agrega las acciones que correspondan -->
-            </tr>
-        <?php } ?>
-                    </tbody>
+                  
+                    </tbody> 
 
 
                     </table>
