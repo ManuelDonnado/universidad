@@ -39,11 +39,11 @@ $user = $_SESSION["user"];
             </div>
 
             <div class="flex flex-col m-3 text-[12px] text-white " >
-            <a href="./view_permisos.php"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
-                <a href="./view_maestros.php"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
-                <a href="./view_alumnos.php">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
-                <a href="./view_materias.php"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
-                <a href="./view_clases.php"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
+            <a href="/view_permisos"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
+               <a href="/view_maestros"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
+               <a href="/alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
+                <a href="/view_materias"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
+                <a href="/view_clases"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
             </div>
         </div>
     <?php  }  elseif ($user['id_rol'] === 2) { ?>  
@@ -86,7 +86,7 @@ $user = $_SESSION["user"];
                 <div id="dropdownContent" class="dropdown hidden mt-0 w-40 absolute right-0 ">
                     <div class="bg-white rounded-lg shadow-lg flex flex-col text-[14px]">
                         <a href="#" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i>  Perfil</a>
-                        <a href="./logout.php" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
+                        <a href="/logout" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@ $user = $_SESSION["user"];
                                     &times;
                                 </div>
                             </div>
-                        <form action="/index.php/view_alumnos" method="post"  class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
+                        <form action="/create_alumno" method="post"  class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
                         <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                             <label for="">Matricula:</label>
                             <input type="text" name="matricula" class="w-[50%] ">
@@ -221,17 +221,19 @@ $user = $_SESSION["user"];
                     </thead>    
                     <tbody>
                     <?php
-        foreach ($data as $alumno) { ?>
-            <tr>
-                <td><?php echo $alumno['id_usuario']; ?></td>
-                <td><?php echo $alumno['matricula']; ?></td>
-                <td><?php echo $alumno['nombre']; ?></td>
-                <td><?php echo $alumno['correo']; ?></td>
-                <td><?php echo $alumno['direccion']; ?></td>
-                <td><?php echo $alumno['fecha_nacimiento']; ?></td>
-                <td>Acciones</td> <!-- Agrega las acciones que correspondan -->
-            </tr>
-        <?php } ?>
+                         $contador = 1; 
+                        foreach ($data as $alumno) { ?>
+                        <tr>
+                            <td><?php echo $contador; ?></td>
+                            <td><?php echo $alumno['matricula']; ?></td>
+                            <td><?php echo $alumno['nombre']; ?></td>
+                            <td><?php echo $alumno['correo']; ?></td>
+                            <td><?php echo $alumno['direccion']; ?></td>
+                            <td><?php echo $alumno['fecha_nacimiento']; ?></td>
+                            <td><i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i></td> <!-- Agrega las acciones que correspondan -->
+                        </tr>
+                        <?php  $contador++;  
+                        } ?>
                     </tbody>
 
 

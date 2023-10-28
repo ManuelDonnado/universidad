@@ -39,11 +39,11 @@ $user = $_SESSION["user"];
             </div>
 
             <div class="flex flex-col m-3 text-[12px] text-white " >
-            <a href="./view_permisos.php"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
-                <a href="./view_maestros.php"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
-                <a href="./view_alumnos.php">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
-                <a href="./view_materias.php"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
-                <a href="./view_clases.php"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
+            <a href="/view_permisos"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
+               <a href="/view_maestros"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
+               <a href="/alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
+                <a href="/view_materias"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
+                <a href="/view_clases"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
             </div>
         </div>
     <?php  }  elseif ($user['id_rol'] === 2) { ?>  

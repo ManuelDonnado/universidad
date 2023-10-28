@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.php", "./src/*.php" , "./*.php"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'mi-verde': '#15803d', 
+      },
+
+    },
   },
   plugins: [],
 }

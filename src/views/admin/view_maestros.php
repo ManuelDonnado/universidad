@@ -39,11 +39,11 @@ $user = $_SESSION["user"];
             </div>
 
             <div class="flex flex-col m-3 text-[12px] text-white " >
-            <a href="./view_permisos.php"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
-                <a href="./view_maestros.php"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
-                <a href="./view_alumnos.php">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
-                <a href="./view_materias.php"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
-                <a href="./view_clases.php"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
+            <a href="/view_permisos"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
+               <a href="/view_maestros"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
+               <a href="/alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
+                <a href="/view_materias"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
+                <a href="/view_clases"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
             </div>
         </div>
     <?php  }  elseif ($user['id_rol'] === 2) { ?>  
@@ -118,9 +118,78 @@ $user = $_SESSION["user"];
                          <p>Información de Maestros</p>
                     </div>
                     <div class="mx-6 my-4">
-                        <a href="#"> Agregar Maestro</a>
+                        <a href="#" id="openModal" class="text-blue-500" > Agregar Maestro</a>
                     </div>   
                 </div>
+
+                 <!-- codigo de modal de insertar alumno -->
+                 <div id="myModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+                    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+                    <div class="modal-container bg-white w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 2xl:w-1/2 mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                        <div class="modal-content py-4 text-left px-6">
+        
+                            <div class="flex justify-between items-center pb-3 ">
+                                <h1 class="text-3xl mb-6">Registrar Nuevo Maestro</h1>
+                                <div id="closeModal" class="modal-close cursor-pointer z-50">
+                                    &times;
+                                </div>
+                            </div>
+                        <form action="/create_maestro" method="post"  class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
+                       
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                            <label for="">Nombre:</label>
+                            <input type="text" name="nombre" class="w-[50%] ">
+                            </div>
+
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                            <label for="">Apellido:</label>
+                            <input type="text" name="apellido" class="w-[50%] ">
+                            </div>
+                        
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                            <label for="">Correo:</label>
+                            <input type="text" name="correo" class="w-[50%] ">
+                            </div>
+                        
+
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                                <label for="">Contraseña:</label>
+                                <input type="password" name="password" class="w-[50%]">
+                            </div>
+
+                    
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                                <label for="">Dirección:</label>
+                                <input type="text" name="direccion" class="w-[50%]" > </input>
+                            </div>
+                            
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                                <label for="">Fecha de Nacimiento:</label>
+                                <input type="date" name="fecha_nacimiento" class="w-[50%]" > </input>
+                            </div>
+
+                            <div class="self-center">
+                                <button type="submit" class="px-2 py-1 rounded-md text-white mb-6 inline-block hover:text-black bg-slate-500">Guardar</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    // Abre el modal al hacer clic en el enlace
+                    document.getElementById('openModal').addEventListener('click', function () {
+                        document.getElementById('myModal').classList.remove('hidden');
+                    });
+
+                    // Cierra el modal al hacer clic en la "x" o en el fondo oscuro
+                    document.getElementById('closeModal').addEventListener('click', function () {
+                        document.getElementById('myModal').classList.add('hidden');
+                    });
+                    document.querySelector('.modal-overlay').addEventListener('click', function () {
+                        document.getElementById('myModal').classList.add('hidden');
+                    });
+                    </script>
                 <hr>
                 <div class="flex flex-row justify-between mx-5 p-3">
                     <div>
@@ -149,6 +218,19 @@ $user = $_SESSION["user"];
                     <tbody>
                   
                     </tbody>
+                    <?php
+                        $contador = 1; 
+                        foreach ($data as $maestro) { ?>
+                        <tr>
+                            <td><?php echo $contador; ?> </td>
+                            <td><?php echo $maestro['nombre']; ?></td>
+                            <td><?php echo $maestro['correo']; ?></td>
+                            <td><?php echo $maestro['direccion']; ?></td>
+                            <td><?php echo $maestro['fecha_nacimiento']; ?></td>
+                            <td> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </td> <!-- Agrega las acciones que correspondan -->
+                        </tr>
+                        <?php  $contador++;  
+                        } ?>
 
 
                     </table>

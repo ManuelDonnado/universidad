@@ -39,11 +39,11 @@ $user = $_SESSION["user"];
             </div>
 
             <div class="flex flex-col m-3 text-[12px] text-white " >
-                <a href="./view_permisos.php"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
-                <a href="./view_maestros.php"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
-                <a href="./view_alumnos.php">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
-                <a href="./view_materias.php"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
-                <a href="./view_clases.php"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
+            <a href="/view_permisos"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
+               <a href="/view_maestros"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
+               <a href="/alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
+                <a href="/view_materias"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
+                <a href="/view_clases"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
             </div>
         </div>
     <?php  }  elseif ($user['id_rol'] === 2) { ?>  
@@ -134,17 +134,42 @@ $user = $_SESSION["user"];
                 </div>
 
                 <div class="w-[80%] h-[50%]" >
-                    <table class="  border-solid border-2 border-black ">
-                    <thead>    
-                        <tr>
-                            <td> # </td>
-                            <td>Email / Usuario</td>
-                            <td> Permiso </td>
-                            <td> Estado </td>
-                            <td> Acciones </td>
+                    <table class="table-auto border-2 border-slate-500  ">
+                    <thead class=" " >    
+                        <tr class="table-auto border-2 border-slate-500 items-center text-[18px] ">
+                            <td class="w-64"  > # </td>
+                            <td  class="w-64">Email / Usuario</td>
+                            <td class="w-64" > Permiso </td>
+                            <td  class="w-64"> Estado </td>
+                            <td  class="w-64"> Acciones </td>
                         </tr>
                     </thead>    
                     <tbody>
+                    <?php
+                    $contador = 1; 
+                    foreach ($data as $permisos) { ?>
+                    <tr class="table-auto border-2 border-slate-500 items-center  " >
+                        <td><?php echo $contador; ?></td>
+                        <td><?php echo $permisos['correo']; ?></td>
+                        <td ><?php if ($permisos['nombre_rol'] == 'Administrador') { ?>
+                            <span class="text-black bg-amber-400  rounded px-2" >Administrador</span>
+                   <?php } else if ($permisos['nombre_rol'] == 'Maestro'){ ?>
+                         <span class="text-white bg-cyan-600 rounded px-2  " >Maestro</span>
+                   <?php  } else { ?>
+                         <span class="text-white bg-slate-700 rounded px-2  " >Alumno</span>
+                   <?php  } ?>
+        </td>
+
+                        <td ><?php if ($permisos['estatus'] == 1) { ?>
+                            <span class="text-white bg-green-700  rounded px-2" >Activo</span>
+                   <?php } else { ?>
+                         <span class="text-white bg-red-600 rounded px-2  " >Inactivo</span>
+                   <?php  } ?>
+        </td>
+                        <td> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </td> <!-- Agrega las acciones que correspondan -->
+                    </tr>
+                <?php  $contador++;  
+                } ?>
                   
                     </tbody> 
 

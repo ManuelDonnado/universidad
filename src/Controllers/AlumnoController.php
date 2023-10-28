@@ -4,10 +4,11 @@ require_once($_SERVER["DOCUMENT_ROOT"] . "/src/Models/Alumnos.php");
 
 class AlumnoController
 {
-    public function MostrarAlumnos()
+    public function mostrarAlumnos()
     {
-        $Alumno = new Alumno();
-        $data = $Alumno->allAlumnos();
+        $alumno = new Alumno();
+        $data = $alumno->allAlumnos();
+        // var_dump($data);
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
     }
 
@@ -17,7 +18,7 @@ class AlumnoController
         $newAlumno = $Alumno->createAlumno($data);
 
         if ($newAlumno) {
-            header("Location: /index.php?success=1");
+            header("Location: /alumnos");
         } else {
             header("Location: /index.php?success=0");
         }
