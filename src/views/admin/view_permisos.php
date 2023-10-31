@@ -41,7 +41,7 @@ $user = $_SESSION["user"];
             <div class="flex flex-col m-3 text-[12px] text-white " >
             <a href="/view_permisos"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
                <a href="/view_maestros"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
-               <a href="/alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
+               <a href="/view_alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
                 <a href="/view_materias"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
                 <a href="/view_clases"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
             </div>
@@ -85,8 +85,8 @@ $user = $_SESSION["user"];
                 </div>
                 <div id="dropdownContent" class="dropdown hidden mt-0 w-40 absolute right-0 ">
                     <div class="bg-white rounded-lg shadow-lg flex flex-col text-[14px]">
-                        <a href="#" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i>  Perfil</a>
-                        <a href="./logout.php" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
+                        <a href="/src/views/Perfil.php" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i>  Perfil</a>
+                        <a href="/logout" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ $user = $_SESSION["user"];
                     <p>Lista de Permisos </p>
                     </div>
                     <div class="flex flex-row" >
-                    <a href="../dashboard.php">Home</a> <p>/ Permisos</p> 
+                    <a href="/src/views/dashboard.php">Home</a> <p>/ Permisos</p> 
                     </div>
                 </div>
             
@@ -128,17 +128,17 @@ $user = $_SESSION["user"];
                     </div>
                     <div>
                         <label for="">Search:</label>
-                        <input type="text" class="border-2 border-black
+                        <input type="text" class="border-2 border-slate-500 
                         "> </input>
                     </div>
                 </div>
 
-                <div class="w-[80%] h-[50%]" >
+                <div class="w-[97%] h-[50%] m-3" >
                     <table class="table-auto border-2 border-slate-500  ">
                     <thead class=" " >    
-                        <tr class="table-auto border-2 border-slate-500 items-center text-[18px] ">
+                        <tr class="table-auto border-2 border-slate-500 items-center text-[18px]" >
                             <td class="w-64"  > # </td>
-                            <td  class="w-64">Email / Usuario</td>
+                            <td  class="w-96">Email / Usuario</td>
                             <td class="w-64" > Permiso </td>
                             <td  class="w-64"> Estado </td>
                             <td  class="w-64"> Acciones </td>

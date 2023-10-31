@@ -22,7 +22,16 @@ class MaestroController
         } else {
             header("Location: /index.php?success=0");
         }
-    }   
+    }  
+    
+    public function borrarMaestro($id){
+        $dltMaestro = new Alumno();
+        $dataDlt = $dltMaestro->deleteUsuario($id);
+        $maestro = new Maestro();
+        $data = $maestro->allMaestros();
+
+        include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php";
+    }
 }
 
 ?>

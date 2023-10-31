@@ -6,7 +6,10 @@ class Maestro {
     public function allMaestros(){
         $db = new Database();
         $connection = $db->connect();
-        $res = $connection->query("SELECT * FROM usuarios WHERE id_rol = 2 ");
+        $res = $connection->query("SELECT us.*, if(ma.nombre_materia IS NULL,'Sin Asignar', ma.nombre_materia) as nombre_materia FROM usuarios as us
+                                    LEFT JOIN clases as cl ON us.id_usuario = cl.id_maestro
+                                    LEFT JOIN materias as ma ON cl.id_materia = ma.id_materia
+                                    WHERE id_rol = 2 ");
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }

@@ -24,5 +24,9 @@ class Usuario {
 
         return $data;
     }
+
+    
+
+
 }
 ?>
