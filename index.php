@@ -5,6 +5,7 @@ require_once(__DIR__ . "/src/Controllers/PermisoController.php");
 require_once(__DIR__ . "/src/Controllers/MaestroController.php");
 require_once(__DIR__ . "/src/Controllers/MateriaController.php");
 require_once(__DIR__ . "/src/Controllers/ClaseController.php");
+require_once(__DIR__ . "/src/Controllers/AdminController.php");
 
 
 $fullUrl = $_SERVER["REQUEST_URI"];
@@ -16,6 +17,7 @@ $permisoController = new PermisoController();
 $maestroController = new MaestroController();
 $materiaController = new MateriaController();
 $claseController = new ClaseController();
+$adminController = new AdminController();
 
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     switch ($url[0]) {
@@ -34,8 +36,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         case "/create_clase":
             $claseController->addClase($_POST);
             break;  
-        case "/update_alumno":
-            $alumnoController->modifyAlumno($_POST);
+        case "/update_usuario":
+            $adminController->modifyUsuario($_POST);
             break;      
         
         default:
@@ -65,9 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"){
         case "/view_clases":
             $claseController->mostrarClases();
             break;
-        case "/edit_alumno":
+      /*  case "/edit_alumno":
             $alumnoController->editAlumno($_GET["id_alumno"]);
-            break;
+            break; */
 
         case "/borrar_alumno":
             $alumnoController->borrarAlumno($_GET["id_alumno"]);

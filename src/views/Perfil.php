@@ -121,25 +121,23 @@ $user = $_SESSION["user"];
                             <p>Perfil  de Usuario</p>
                         </div>
                         <div class="mx-6 my-4">
-                            <button type="button" id="openModal" class="bg-cyan-600  text-white px-2 rounded "> Editar Perfil </button>
+                            <a href="/src/views/edit_perfil.php" class="bg-cyan-600  text-white px-2 rounded " > Editar Perfil</a>
+                            
                         </div>
                     </div>
 
-                    <!-- codigo de modal de insertar alumno -->
-                    
-
-                    
-                       
+        
                     <hr>
                   
 
                     <div class="w-[97%] h-[50%] m-3">
-                    <form action="/update_alumno" method="post" class="w-[700px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
+                    <form action="#" method="post" class="w-[700px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
+                    <?php if ($user['id_rol'] === 3) { ?>
                                     <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                         <label for="">Matricula:</label>
                                         <input type="text" name="matricula" class="w-[80%]" readonly value="<?php echo $user['matricula'] ?>" >
                                     </div>
-
+                                    <?php }?>
                                     <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                         <label for="">Nombre:</label>
                                         <input type="text" name="nombre" class="w-[80%]" readonly  value="<?php echo $user['nombre'] ?>" >
@@ -154,13 +152,6 @@ $user = $_SESSION["user"];
                                         <label for="">Correo:</label>
                                         <input type="text" name="correo" class="w-[80%]" readonly value="<?php echo $user['correo'] ?>">
                                     </div>
-
-
-                                    <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                                        <label for="">Contraseña:</label>
-                                        <input type="password" name="password" class="w-[80%]" readonly value="<?php echo $user['password'] ?>">
-                                    </div>
-
 
                                     <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                         <label for="">Dirección:</label>

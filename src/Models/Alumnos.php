@@ -38,30 +38,7 @@ class Alumno {
         }
     }
 
-    public static function updateAlumno($data)
-    {
-        $id_usuario = $data["id_usuario"];
-        $nombre = $data["nombre"];
-        $apellido = $data["apellido"];
-        $correo = $data["correo"];
-        $password = $data ['password'];
-        $direccion = $data["direccion"];
-        $fecha_nacimiento = $data["fecha_nacimiento"];
-
-        if(empty($password)){
-            $db = new Database();
-            $connection = $db->connect();
-            $res = $connection->query("UPDATE usuarios  set nombre = '$nombre', apellido = '$apellido', correo = '$correo', direccion = '$direccion', fecha_nacimiento = '$fecha_nacimiento'  where id_usuario = $id_usuario"); 
-        }else {
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-            $db = new Database();
-            $connection = $db->connect();
-            $res = $connection->query("UPDATE usuarios  set nombre = '$nombre', apellido = '$apellido', correo = '$correo', password = '$hash', direccion = '$direccion', fecha_nacimiento = '$fecha_nacimiento'  where id_usuario = $id_usuario");  
-        }  
-        if ($res) {
-            return true;
-        }
-    }
+    
 
     public static function findAlumno($id)
     {

@@ -121,25 +121,22 @@ $user = $_SESSION["user"];
                             <p>Perfil  de Usuario</p>
                         </div>
                         <div class="mx-6 my-4">
-                            <button type="button" id="openModal" class="bg-cyan-600  text-white px-2 rounded "> Editar Perfil</button>
+                        <a href="/src/views/Perfil.php" class="bg-cyan-600  text-white px-2 rounded " > Cancelar Edición</a>
                         </div>
                     </div>
-
-                    <!-- codigo de modal de insertar alumno -->
-                    
-
-                    
+       
                        
                     <hr>
                   
 
                     <div class="w-[97%] h-[50%] m-3">
-                    <form action="/update_alumno" method="post" class="w-[700px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
-                                    <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                                        <label for="">Matricula:</label>
-                                        <input type="text" name="matricula" class="w-[80%]"  value="<?php echo $user['matricula'] ?>" >
-                                    </div>
+                    <form action="/update_usuario" method="post" class="w-[700px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
 
+                                   
+                                    <div class="flex gap-1 flex-row  items-center justify-between mx-10 hidden ">
+                                        <input type="text" name="id_usuario" class="w-[80%]"   value="<?php echo $user['id_usuario'] ?>" >
+                                    </div>
+                  
                                     <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                         <label for="">Nombre:</label>
                                         <input type="text" name="nombre" class="w-[80%]"   value="<?php echo $user['nombre'] ?>" >
