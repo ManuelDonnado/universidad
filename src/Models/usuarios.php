@@ -13,7 +13,7 @@ class Usuario {
 
     }
 
-    public function getByEmail($correo, $password)
+    public function getByEmail($correo)
     {   
         $db = new Database();
         $connection = $db->connect();

@@ -152,12 +152,10 @@ $user = $_SESSION["user"];
                                         <input type="text" name="correo" class="w-[80%]"  value="<?php echo $user['correo'] ?>">
                                     </div>
 
-
                                     <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                         <label for="">Contraseña:</label>
-                                        <input type="password" name="password" class="w-[80%]"  value="<?php echo $user['password'] ?>">
+                                        <input type="password" name="password" class="w-[80%]" value="">
                                     </div>
-
 
                                     <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                         <label for="">Dirección:</label>

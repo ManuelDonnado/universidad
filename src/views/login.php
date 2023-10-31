@@ -24,7 +24,7 @@
 
          
             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                <input type="text" name="password" class="w-[95%] border-2 border-slate-300  " placeholder="   Password"  > <i class="fa-solid fa-lock translate-y-0 -translate-x-10 " style="color: #919bac;"> </i>  </input>
+                <input type="password" name="password" class="w-[95%] border-2 border-slate-300  " placeholder="   Password"  > <i class="fa-solid fa-lock translate-y-0 -translate-x-10 " style="color: #919bac;"> </i>  </input>
             </div>
 
             <div class="self-end ">
