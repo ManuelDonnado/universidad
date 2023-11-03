@@ -101,6 +101,15 @@ $user = $_SESSION["user"];
     </script>
         <!-- contenido de la tabla --> 
     <div class="bg-stone-100 flex-grow p-4" >
+
+            <p><?php  if ($notification  != '') {
+                    if ($tipo == "C") { ?>
+                    <div class="bg-green-700 " >  <?php echo $notification  ?> </div>
+                 <?php   } else { ?>
+                    <div class="bg-red-600 " >  <?php echo $notification  ?> </div>
+                <?php }
+                } ; ?></p>
+
     
                 <div class="flex flex-row justify-between m-10" >
                     <div>

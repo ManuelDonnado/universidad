@@ -19,6 +19,7 @@ $materiaController = new MateriaController();
 $claseController = new ClaseController();
 $adminController = new AdminController();
 
+
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     switch ($url[0]) {
         case "/login":

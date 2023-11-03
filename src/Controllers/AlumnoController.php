@@ -81,18 +81,27 @@ class AlumnoController
 
     public function borrarAlumno($id){
         $dltAlumno = new Alumno();
-        $dataDlt = $dltAlumno->deleteUsuario($id);
-        $data = $dltAlumno->allAlumnos();
+        $valida = $dltAlumno->validaUsuarioDelete($id);
+        
+        if (empty($valida)) {
+            $dataDlt = $dltAlumno->deleteUsuario($id);
+            $data = $dltAlumno->allAlumnos();
 
-        if ($dataDlt) {
-            $notification = 'Alumno Eliminado Correctamente';
-            $tipo = 'C';
-            include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
+            if ($dataDlt) {
+                $notification = 'Alumno Eliminado Correctamente';
+                $tipo = 'C';
+                include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
+            } else {
+                $notification = "Alumno No se pudo Eliminar";
+                $tipo = 'I';
+                include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
+            }   
         } else {
-            $notification = "Alumno No se pudo Eliminar";
+            $data = $dltAlumno->allAlumnos();
+            $notification = "El alumno no se puede eliminar por que ya tiene clases asignadas";
             $tipo = 'I';
-            include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
-        }   
+            include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php"; 
+        }
     }
 
     public function agregarClases($idClase){

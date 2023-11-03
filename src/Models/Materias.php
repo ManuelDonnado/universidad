@@ -10,7 +10,6 @@ class Materia {
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
-    
     }
 
 
@@ -31,11 +30,25 @@ class Materia {
     }
 
     public function deleteMateria($id){
+        try {
+            $db = new Database();
+            $connection = $db->connect();
+            $res = $connection->query("DELETE FROM materias WHERE id_materia = $id ");
+
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+
+    public function validaMateriaDelete($id){
         $db = new Database();
         $connection = $db->connect();
-        $res = $connection->query("DELETE FROM materias WHERE id_materia = $id ");
+        $res = $connection->query("SELECT * FROM clases WHERE id_materia = '$id' ");
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
-        return true;
+        return $data;
     }
 
 }

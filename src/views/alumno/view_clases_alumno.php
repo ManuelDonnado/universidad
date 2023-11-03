@@ -188,7 +188,11 @@ $user = $_SESSION["user"];
                     </div>
 
                     <div class="w-[80%] h-[50%]">
-                        <table class="table-auto border-2 border-slate-500  m-10 ">
+                        
+                    <?php if (empty($dataDis)) { ?>
+                       <div  class="bg-green-700 "> <p>Ya estas Inscrito en todas las materias.</p></div> 
+                       <?php } else { ?>
+                    <table class="table-auto border-2 border-slate-500  m-10 ">
                             <thead>
                                 <tr class="table-auto border-2 border-slate-500 items-center text-[18px]" >
                                     <td  class="w-64" > # </td>
@@ -212,6 +216,7 @@ $user = $_SESSION["user"];
                                 } ?>
                             </tbody>
                         </table>
+                        <?php }?>
                     </div>
                 </div>
             </div>

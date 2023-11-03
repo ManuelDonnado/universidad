@@ -152,5 +152,23 @@ class Alumno {
             return false;
         }
     }
+
+    public function validaUsuarioDelete($id){
+        $db = new Database();
+        $connection = $db->connect();
+        $res = $connection->query("SELECT * FROM clases_alumnos WHERE id_alumno = '$id' ");
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
+
+    public function validaMaestroDelete($id){
+        $db = new Database();
+        $connection = $db->connect();
+        $res = $connection->query("SELECT * FROM clases WHERE id_maestro = '$id' ");
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
 }
 ?>

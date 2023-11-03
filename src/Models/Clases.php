@@ -56,11 +56,15 @@ class Clase {
     }
 
     public function deleteClases($id){
-        $db = new Database();
-        $connection = $db->connect();
-        $res = $connection->query("DELETE FROM clases WHERE id_clase = '$id' ");
+        try {
+            $db = new Database();
+            $connection = $db->connect();
+            $res = $connection->query("DELETE FROM clases WHERE id_clase = '$id' ");
 
-        return true;
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }  
     }
 
     public static function findClase($id)
@@ -125,5 +129,13 @@ class Clase {
     
     }
 
+    public function validaClaseDelete($id){
+        $db = new Database();
+        $connection = $db->connect();
+        $res = $connection->query("SELECT * FROM clases_alumnos WHERE id_clase = '$id' ");
+        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
 }
 ?>

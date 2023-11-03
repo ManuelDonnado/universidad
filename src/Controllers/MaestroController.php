@@ -8,6 +8,8 @@ class MaestroController
     {
         $maestro = new Maestro();
         $data = $maestro->allMaestros();
+        $notification = '';
+        $tipo = '';
         // var_dump($data);
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php";
     }
@@ -16,21 +18,46 @@ class MaestroController
     {
         $maestro = new Maestro();
         $newMaestro = $maestro->createMaestro($data);
+        $data = $maestro->allMaestros();
 
         if ($newMaestro) {
-            header("Location: /view_maestros");
+            $notification = "Maestro Creado Correctamente";
+            $tipo = 'C';
+            include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php";
         } else {
-            header("Location: /index.php?success=0");
+            $notification = "Maestro No se pudo Crear";
+            $tipo = 'I';
+            include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php";
         }
+        
     }  
     
     public function borrarMaestro($id){
         $dltMaestro = new Alumno();
-        $dataDlt = $dltMaestro->deleteUsuario($id);
         $maestro = new Maestro();
-        $data = $maestro->allMaestros();
+        $valida = $dltMaestro->validaMaestroDelete($id);
+        
+        if (empty($valida)) {
+            $dataDlt = $dltMaestro->deleteUsuario($id);
+            $data = $maestro->allMaestros();
+                
+            if ($dataDlt) {
+                $notification = 'Maestro Eliminado Correctamente';
+                $tipo = 'C';
+                include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php";
+            } else {
+                $notification = "Maestro No se pudo Eliminar";
+                $tipo = 'I';
+                include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php";
+            }   
+        } else {
+            $data = $maestro->allMaestros();
+            $notification = "El Maestro no se puede eliminar por que ya tiene una clase asignada";
+            $tipo = 'I';
+            include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php"; 
+        }    
 
-        include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php";
+            
     }
 
     public function modifyMaestro($request)
