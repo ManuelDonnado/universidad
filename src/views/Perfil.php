@@ -55,11 +55,7 @@ $user = $_SESSION["user"];
                 </div>
 
                 <div class="flex flex-col m-3 text-[12px] text-white ">
-<<<<<<< HEAD
                     <a href="/view_maestro_alumno"><i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i> Alumnos </a>
-=======
-                    <a href="#"><i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i> Alumnos </a>
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
                 </div>
             </div>
         <?php  } elseif ($user['id_rol'] === 3) { ?>
@@ -69,13 +65,8 @@ $user = $_SESSION["user"];
                 </div>
 
                 <div class="flex flex-col m-3 text-[12px] text-white ">
-<<<<<<< HEAD
                     <a href="/view_calificaciones"> <i class="fa-regular fa-file-lines" style="color: #89919f;"></i> Ver Calificaciones </a>
                     <a href="/view_clases_alumno"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i> Administra tus clases</a>
-=======
-                    <a href="#"> <i class="fa-regular fa-file-lines" style="color: #89919f;"></i> Ver Calificaciones </a>
-                    <a href="#"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i> Administra tus clases</a>
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
                 </div>
             </div>
         <?php }  ?>
@@ -115,7 +106,6 @@ $user = $_SESSION["user"];
 
             <div class="flex flex-row justify-between m-10">
                 <div>
-<<<<<<< HEAD
                     <p>Perfil </p>
                 </div>
                 <div class="flex flex-row">
@@ -127,13 +117,6 @@ $user = $_SESSION["user"];
                     <?php  } elseif ($user['id_rol'] === 3) { ?>
                     <p> / Alumno</p>
                     <?php }  ?>    
-=======
-                    <p>Lista de Alumnos </p>
-                </div>
-                <div class="flex flex-row">
-                    <a href="/src/views/dashboard.php">Home</a>
-                    <p>/ Alumnos</p>
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
                 </div>
             </div>
 
@@ -141,7 +124,6 @@ $user = $_SESSION["user"];
                 <div>
                     <div class="flex flex-row justify-between mx-5 p-3">
                         <div class="mx-6 my-4">
-<<<<<<< HEAD
                             <p>Perfil  de  </p>  
                             <?php if ($user['id_rol'] === 1) { ?>
                             <p>  Administrador</p>
@@ -150,9 +132,6 @@ $user = $_SESSION["user"];
                             <?php  } elseif ($user['id_rol'] === 3) { ?>
                             <p>  Alumno</p>
                             <?php }  ?>    
-=======
-                            <p>Perfil  de Usuario</p>
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
                         </div>
                         <div class="mx-6 my-4">
                             <a href="/src/views/edit_perfil.php" class="bg-cyan-600  text-white px-2 rounded " > Editar Perfil</a>

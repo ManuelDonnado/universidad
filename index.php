@@ -38,7 +38,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
             break;  
         case "/update_usuario":
             $adminController->modifyUsuario($_POST);
-<<<<<<< HEAD
             break;  
             
         case "/update_alumno":
@@ -52,8 +51,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
             break;    
         case "/update_clase":
             $claseController->modifyClase($_POST);
-=======
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
             break;      
         
         default:
@@ -83,12 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"){
         case "/view_clases":
             $claseController->mostrarClases();
             break;
-<<<<<<< HEAD
         case "/view_clase_maestro":
             $claseController->mostrarAlumnosClase();
             break;    
-=======
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
       /*  case "/edit_alumno":
             $alumnoController->editAlumno($_GET["id_alumno"]);
             break; */
@@ -108,7 +102,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"){
         case "/borrar_clase_alumno":
             $alumnoController->borrarClaseAlumno($_GET["id_clase_alumno"]);
             break; 
-<<<<<<< HEAD
         case "/edit_alumno":
             $alumnoController->editAlumno($_GET["id_alumno"]);
             break;
@@ -124,8 +117,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"){
 
 
 
-=======
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
 
         case "/view_calificaciones":
             $alumnoController->vercalificacionesAlumnos();

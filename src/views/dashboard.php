@@ -53,11 +53,7 @@ $user = $_SESSION["user"];
             </div>
 
             <div class="flex flex-col m-3 text-[12px] text-white ">
-<<<<<<< HEAD
                <a href="/view_clase_maestro"><i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
-=======
-               <a href="/view_maestro_alumno"><i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
             </div>
         </div>
     <?php  }  elseif ($user['id_rol'] === 3){ ?>

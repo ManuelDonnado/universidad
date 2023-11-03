@@ -196,12 +196,7 @@ $user = $_SESSION["user"];
                         <tr>
                             <td><?php echo $contador; ?></td>
                             <td><?php echo $materia['nombre_materia']; ?></td>
-<<<<<<< HEAD
                             <td>  <a href="/borrar_materia?id_materia=<?= $materia["id_materia"] ?>"><i class="fa-solid fa-trash-can" style="color: #f22c2c;"></i></a>   
-=======
-                            <td>  <a href="#"> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </a>   
-                            <a href="/borrar_materia?id_materia=<?= $materia["id_materia"] ?>"><i class="fa-solid fa-trash-can" style="color: #f22c2c;"></i></a>   
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
                             </td>
                         </tr>
                         <?php  $contador++;  

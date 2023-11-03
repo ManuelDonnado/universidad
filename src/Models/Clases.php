@@ -6,11 +6,8 @@ class Clase {
     public function allClases(){
         $db = new Database();
         $connection = $db->connect();
-<<<<<<< HEAD
         $totAsistencia = $connection->query("UPDATE  clases AS cl SET  cl.alumnos_inscritos = (SELECT COUNT(id_alumno) FROM clases_alumnos AS ca WHERE  cl.id_clase = ca.id_clase) ");
 
-=======
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
         $res = $connection->query("SELECT cl.*, ma.nombre_materia, CONCAT ( us.nombre,' ', us.apellido) as maestro FROM clases as cl
                                    INNER JOIN materias as ma ON cl.id_materia = ma.id_materia
                                    INNER JOIN usuarios as us ON cl.id_maestro = us.id_usuario");
@@ -65,7 +62,6 @@ class Clase {
 
         return true;
     }
-<<<<<<< HEAD
 
     public static function findClase($id)
     {
@@ -129,7 +125,5 @@ class Clase {
     
     }
 
-=======
->>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
 }
 ?>
