@@ -34,6 +34,11 @@ class Alumno {
         }
     }
 
+<<<<<<< HEAD
+=======
+    
+
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
     public static function findAlumno($id)
     {
         $db = new Database();
@@ -44,6 +49,10 @@ class Alumno {
         return $data;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
     public function calificacionesAlumnos($id){
         $db = new Database();
         $connection = $db->connect();
@@ -56,6 +65,10 @@ class Alumno {
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
     }
 
     public function claseInscritaAlumno($id) {
@@ -86,6 +99,7 @@ class Alumno {
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
         return $data;
+<<<<<<< HEAD
     }
 
     public function deleteUsuario($id){
@@ -98,6 +112,17 @@ class Alumno {
         } catch (PDOException $e) {
             return false;
         }
+=======
+
+    }
+
+    public function deleteUsuario($id){
+        $db = new Database();
+        $connection = $db->connect();
+        $res = $connection->query("DELETE FROM usuarios WHERE id_usuario = $id ");
+
+        return true;
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
     }
 
     public function agregarClaseAlumno($idClase, $id)
@@ -114,6 +139,7 @@ class Alumno {
     }
 
     public function deleteClasesAlumnos($id){
+<<<<<<< HEAD
         try {
             $db = new Database();
             $connection = $db->connect();
@@ -152,5 +178,14 @@ class Alumno {
             return false;
         }
     }
+=======
+        $db = new Database();
+        $connection = $db->connect();
+        $res = $connection->query("DELETE FROM clases_alumnos WHERE id_clase_alumno = '$id' ");
+
+        return true;
+    }
+
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
 }
 ?>

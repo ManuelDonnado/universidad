@@ -228,7 +228,11 @@ $user = $_SESSION["user"];
                             <td><?php echo $maestro['direccion']; ?></td>
                             <td><?php echo $maestro['fecha_nacimiento']; ?></td>
                             <td> <?php echo $maestro['nombre_materia']; ?></td>
+<<<<<<< HEAD
                             <td>  <a href="/edit_maestro?id_maestro=<?= $maestro["id_usuario"] ?>"> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </a>   
+=======
+                            <td>  <a href="#"> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </a>   
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
                             <a href="/borrar_maestro?id_maestro=<?= $maestro["id_usuario"] ?>"><i class="fa-solid fa-trash-can" style="color: #f22c2c;"></i></a>
                             </td> <!-- Agrega las acciones que correspondan -->
                         </tr>

@@ -220,7 +220,11 @@ $user = $_SESSION["user"];
                             <td><?php echo $clase['nombre_materia']; ?></td>
                             <td><?php echo $clase['maestro']; ?></td>
                             <td><?php echo $clase['alumnos_inscritos']; ?></td>
+<<<<<<< HEAD
                             <td>  <a href="/edit_clase?id_clase=<?= $clase["id_clase"] ?>"> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </a>   
+=======
+                            <td>  <a href="#"> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </a>   
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
                             <a href="/borrar_clase?id_clase=<?= $clase["id_clase"] ?>"><i class="fa-solid fa-trash-can" style="color: #f22c2c;"></i></a>   
                             </td>
                         </tr>

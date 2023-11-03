@@ -2,7 +2,10 @@
 require_once($_SERVER["DOCUMENT_ROOT"] . "/src/Models/Clases.php");
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
 class ClaseController
 {
     public function mostrarClases()
@@ -34,6 +37,7 @@ class ClaseController
 
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_clases.php";
     }
+<<<<<<< HEAD
 
     public function modifyClase($request)
     {
@@ -76,6 +80,8 @@ class ClaseController
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/maestro/view_maestro_alumno.php";
     }
 
+=======
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
 }
 
 ?>

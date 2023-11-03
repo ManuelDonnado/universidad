@@ -17,9 +17,12 @@ class LoginController {
         if ($login === false) {
             $not = "El correo y la contraseña son incorrectos";
         }   else {
+<<<<<<< HEAD
             /*session_start();
                     $_SESSION["user"] = $login;
             header("Location: /src/views/dashboard.php");  */
+=======
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
             if (password_verify($passIngresada,$login["password"])) {
                 if ($login["estatus"] === 1) {
                     session_start();

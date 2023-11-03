@@ -18,12 +18,18 @@ class AlumnoController
     {
         $alumno = new Alumno();
         $newAlumno = $alumno->createAlumno($data);
+<<<<<<< HEAD
         $data = $alumno->allAlumnos();
 
         if ($newAlumno) {
             $notification = "Alumno Creado Correctamente";
             $tipo = 'C';
             include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
+=======
+
+        if ($newAlumno) {
+            header("Location: /view_alumnos");
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
         } else {
             $notification = "Alumno No se pudo Crear";
             $tipo = 'I';
@@ -35,6 +41,7 @@ class AlumnoController
     {
         $alumno = new Alumno();
         $updateAlumno = $alumno->updateAlumno($request);
+<<<<<<< HEAD
         $data = $alumno->allAlumnos();
 
         if ($updateAlumno) {
@@ -45,14 +52,27 @@ class AlumnoController
             $notification ='Alumno ' . $request['nombre'] . 'no se pudo Modificar';
             $tipo = 'I';
             include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
+=======
+
+        if ($updateAlumno) {
+            header("Location: /alumnos");
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
         }
     }
 
     public function editAlumno($id)
     {
+<<<<<<< HEAD
         $alu = new Alumno();
         $alumno = $alu->findAlumno($id);
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/update_alumnos.php";
+=======
+        $alumno = new Alumno();
+        $data = $alumno->allAlumnos();
+        $infoAlumno = $alumno->findAlumno($id);
+
+        include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
     }
 
     public function  vercalificacionesAlumnos()
@@ -62,8 +82,12 @@ class AlumnoController
         $id =  $user['id_usuario']; 
         $calificacion = new Alumno();
         $data = $calificacion->calificacionesAlumnos($id);
+<<<<<<< HEAD
         $notification = '';
         $tipo = '';
+=======
+        // var_dump($data);
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/alumno/view_calificaciones.php";
     }
 
@@ -74,8 +98,12 @@ class AlumnoController
         $claseAlumno = new Alumno();
         $data = $claseAlumno->claseInscritaAlumno($id);
         $dataDis = $claseAlumno->clasesDisponibles($id);
+<<<<<<< HEAD
         $notification = '';
         $tipo = '';
+=======
+
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/alumno/view_clases_alumno.php";
     }
 
@@ -84,6 +112,7 @@ class AlumnoController
         $dataDlt = $dltAlumno->deleteUsuario($id);
         $data = $dltAlumno->allAlumnos();
 
+<<<<<<< HEAD
         if ($dataDlt) {
             $notification = 'Alumno Eliminado Correctamente';
             $tipo = 'C';
@@ -93,6 +122,9 @@ class AlumnoController
             $tipo = 'I';
             include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
         }   
+=======
+        include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_alumnos.php";
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
     }
 
     public function agregarClases($idClase){
@@ -103,6 +135,7 @@ class AlumnoController
         $addClase = $claseAlumno->agregarClaseAlumno($idClase,$id);
         $data = $claseAlumno->claseInscritaAlumno($id);
         $dataDis = $claseAlumno->clasesDisponibles($id);
+<<<<<<< HEAD
         if ($addClase) {
             $notification = 'Clase Agregada Correctamente';
             $tipo = 'C';
@@ -112,6 +145,10 @@ class AlumnoController
             $tipo = 'I';
             include $_SERVER["DOCUMENT_ROOT"] . "/src/views/alumno/view_clases_alumno.php";
         }     
+=======
+
+        include $_SERVER["DOCUMENT_ROOT"] . "/src/views/alumno/view_clases_alumno.php";
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
     }
 
     public function borrarClaseAlumno($id){
@@ -122,6 +159,7 @@ class AlumnoController
         $dataDlt = $dltClaseAlumno->deleteClasesAlumnos($id);
         $data = $dltClaseAlumno->claseInscritaAlumno($idAlumno);
         $dataDis = $dltClaseAlumno->clasesDisponibles($idAlumno);
+<<<<<<< HEAD
         if ($dataDlt) {
             $notification = 'Clase Eliminada Correctamente';
             $tipo = 'C';    
@@ -131,6 +169,10 @@ class AlumnoController
             $tipo = 'I';
             include $_SERVER["DOCUMENT_ROOT"] . "/src/views/alumno/view_clases_alumno.php";
         } 
+=======
+
+        include $_SERVER["DOCUMENT_ROOT"] . "/src/views/alumno/view_clases_alumno.php";
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
     }
 }
 

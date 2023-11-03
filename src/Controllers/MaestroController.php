@@ -32,6 +32,7 @@ class MaestroController
 
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/view_maestros.php";
     }
+<<<<<<< HEAD
 
     public function modifyMaestro($request)
     {
@@ -57,6 +58,8 @@ class MaestroController
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/admin/update_maestros.php";
     }
 
+=======
+>>>>>>> 01cc5dd11aa061f77f7cf6876e26fb43327ce472
 }
 
 ?>
