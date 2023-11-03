@@ -41,7 +41,7 @@ $user = $_SESSION["user"];
             <div class="flex flex-col m-3 text-[12px] text-white " >
             <a href="/view_permisos"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
                <a href="/view_maestros"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
-               <a href="/alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
+               <a href="/view_alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
                 <a href="/view_materias"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
                 <a href="/view_clases"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
             </div>
@@ -85,8 +85,8 @@ $user = $_SESSION["user"];
                 </div>
                 <div id="dropdownContent" class="dropdown hidden mt-0 w-40 absolute right-0 ">
                     <div class="bg-white rounded-lg shadow-lg flex flex-col text-[14px]">
-                        <a href="#" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i>  Perfil</a>
-                        <a href="./logout.php" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
+                        <a href="/src/views/Perfil.php" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i>  Perfil</a>
+                        <a href="/logout" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ $user = $_SESSION["user"];
                     <p>Lista de Materias</p>
                     </div>
                     <div class="flex flex-row" >
-                    <a href="../dashboard.php">Home</a> <p>/ Materias</p> 
+                    <a href="/src/views/dashboard.php">Home</a> <p>/ Materias</p> 
                     </div>
                 </div>
             
@@ -118,9 +118,54 @@ $user = $_SESSION["user"];
                          <p>Información de Materias</p>
                     </div>
                     <div class="mx-6 my-4">
-                        <a href="#"> Agregar Materia</a>
+                    <button type="button"  id="openModal" class="bg-cyan-600  text-white px-2 rounded " >  Agregar Materia</button>    
+                 
                     </div>   
                 </div>
+
+                <!-- codigo de modal de insertar alumno -->
+                <div id="myModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+                    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+                    <div class="modal-container bg-white w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3 2xl:w-1/2 mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                        <div class="modal-content py-4 text-left px-6">
+        
+                            <div class="flex justify-between items-center pb-3 ">
+                                <h1 class="text-3xl mb-6">Registrar Nueva Materia</h1>
+                                <div id="closeModal" class="modal-close cursor-pointer z-50">
+                                    &times;
+                                </div>
+                            </div>
+                        <form action="/create_materia" method="post"  class="w-[700px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
+                       
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                            <label for="">Nombre:</label>
+                            <input type="text" name="nombre_materia" class="w-[80%] ">
+                            </div>
+
+                            <div class="self-center">
+                                <button type="submit" class="px-2 py-1 rounded-md text-white mb-6 inline-block hover:text-black bg-slate-500">Guardar</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    // Abre el modal al hacer clic en el enlace
+                    document.getElementById('openModal').addEventListener('click', function () {
+                        document.getElementById('myModal').classList.remove('hidden');
+                    });
+
+                    // Cierra el modal al hacer clic en la "x" o en el fondo oscuro
+                    document.getElementById('closeModal').addEventListener('click', function () {
+                        document.getElementById('myModal').classList.add('hidden');
+                    });
+                    document.querySelector('.modal-overlay').addEventListener('click', function () {
+                        document.getElementById('myModal').classList.add('hidden');
+                    });
+                    </script>
+
+
                 <hr>
                 <div class="flex flex-row justify-between mx-5 p-3">
                     <div>
@@ -128,23 +173,34 @@ $user = $_SESSION["user"];
                     </div>
                     <div>
                         <label for="">Search:</label>
-                        <input type="text" class="border-2 border-black
+                        <input type="text" class="border-2 border-slate-500 
                         "> </input>
                     </div>
                 </div>
 
-                <div class="w-[80%] h-[50%]" >
-                    <table class="  border-solid border-2 border-black ">
+                <div class="w-[60%] h-[50%] mx-24  my-5" >
+                    <table class="  border-solid border-2 border-slate-500  ">
                     <thead>    
-                        <tr>
-                            <td> # </td>
-                            <td> Nombre </td>
-                            <td> Acciones </td>
+                        <tr class="table-auto border-2 border-slate-500 items-center text-[18px]"  >
+                            <td class="w-64"  > # </td>
+                            <td  class="w-64"> Nombre </td>
+                            <td  class="w-64"> Acciones </td>
                         </tr>
                     </thead>    
                     <tbody>
                   
                     </tbody>
+                    <?php
+                         $contador = 1; 
+                        foreach ($data as $materia) { ?>
+                        <tr>
+                            <td><?php echo $contador; ?></td>
+                            <td><?php echo $materia['nombre_materia']; ?></td>
+                            <td>  <a href="/borrar_materia?id_materia=<?= $materia["id_materia"] ?>"><i class="fa-solid fa-trash-can" style="color: #f22c2c;"></i></a>   
+                            </td>
+                        </tr>
+                        <?php  $contador++;  
+                        } ?>
 
 
                     </table>

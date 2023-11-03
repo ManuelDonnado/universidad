@@ -10,19 +10,29 @@ class LoginController {
 
     public function login ($request) {
         $LoginController = new Usuario();
-        $login = $LoginController->getByEmail($request["correo"],$request["password"]);
+        $login = $LoginController->getByEmail($request["correo"]);
+        $passIngresada = $request["password"];
+        $not = '';
 
         if ($login === false) {
-            echo "el correo y la contraseña son incorrectos";
-            # code...
+            $not = "El correo y la contraseña son incorrectos";
         }   else {
-            if ($login["estatus"] === 1) {
-                session_start();
-                $_SESSION["user"] = $login;
-                header("Location: /src/views/dashboard.php");  
+            /*session_start();
+                    $_SESSION["user"] = $login;
+            header("Location: /src/views/dashboard.php");  */
+            if (password_verify($passIngresada,$login["password"])) {
+                if ($login["estatus"] === 1) {
+                    session_start();
+                    $_SESSION["user"] = $login;
+                    header("Location: /src/views/dashboard.php");  
+                } else{
+                    $not = "Usuario Inactivo, valida tu información con el administrador";
+                    header("Location: /index.php"); 
+                }    
             } else{
-                echo "Usuario Inactivo, valida tu información con el administrador";
-            }    
+                $not = "Contraseña incorrecta, valida tu información";
+                header("Location: /index.php"); 
+            }   
         }
     
     }

@@ -106,11 +106,11 @@ $user = $_SESSION["user"];
 
             <div class="flex flex-row justify-between m-10">
                 <div>
-                    <p>Editar Clases</p>
+                    <p>Editar Datos del Maestro</p>
                 </div>
                 <div class="flex flex-row">
                     <a href="/src/views/dashboard.php">Home</a>
-                    <p>/ Clases</p>
+                    <p>/ Maestro</p>
                 </div>
             </div>
 
@@ -118,10 +118,10 @@ $user = $_SESSION["user"];
                 <div>
                     <div class="flex flex-row justify-between mx-5 p-3">
                         <div class="mx-6 my-4">
-                            <p> Información de las Clases </p>
+                            <p> Información del Maestro</p>
                         </div>
                         <div class="mx-6 my-4">
-                        <a href="/view_clases" class="bg-cyan-600  text-white px-2 rounded " > Cancelar Edición</a>
+                        <a href="/view_maestros" class="bg-cyan-600  text-white px-2 rounded " > Cancelar Edición</a>
                         </div>
                     </div>
        
@@ -130,54 +130,51 @@ $user = $_SESSION["user"];
                   
 
                     <div class="w-[97%] h-[50%] m-3">
-                    <form action="/update_clase" method="post" class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
-                            <input type="text" hidden name="id_clase" value="<?= $clase['id_clase'] ?>">
+                    <form action="/update_maestro" method="post" class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
+                            <input type="text" hidden name="id_usuario" value="<?= $maestroInfo['id_usuario'] ?>">
                             
-
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Materia Disponibles:</label>
-                            <select name="id_materia" id="id_materia" class="w-[80%] ">
-                                <?php
-                                foreach ($materias as $materia) {
-                                    if ($clase["id_materia"] === $materia["id_materia"]) {
-                                        echo "<option value= " . $materia['id_materia'] . " selected> " . $materia['nombre_materia'] . "</option>";
-                                    } else {
-                                        echo "<option value=" . $materia['id_materia'] . " > " . $materia['nombre_materia'] . "</option>";
-                                    }
-                                }   ?>
-                            </select>
+                                <label for="">Nombre:</label>
+                                <input type="text" name="nombre" class="w-[80%] " value="<?php echo $maestroInfo['nombre'] ?>">
                             </div>
 
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Maestros Disponibles:</label>
-                            <select name="id_maestro" id="id_maestro" class="w-[80%] ">
-                            <?php
-                                foreach ($maestros as $maestro) {
-                                    if ($clase["id_maestro"] === $maestro["id_usuario"]) {
-                                        echo "<option value= " . $maestro['id_usuario'] . " selected> " . $maestro['maestro'] . "</option>";
-                                    } else {
-                                        echo "<option value=" . $maestro['id_usuario'] . " > " . $maestro['maestro'] . "</option>";
-                                    }
-                                }   ?>
-                            </select>
+                                <label for="">Apellido:</label>
+                                <input type="text" name="apellido" class="w-[80%]" value="<?php echo $maestroInfo['apellido'] ?>">
                             </div>
-                            
-        
-                            
+
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                                <label for="">Correo:</label>
+                                <input type="text" name="correo" class="w-[80%]" value="<?php echo $maestroInfo['correo'] ?>">
+                            </div>
+
+
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10 w-[80%]" >
+                                <label for="">Contraseña:</label>
+                                <input type="password" name="password" class="w-[50%]">
+                            </div>
+
+
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                                <label for="">Dirección:</label>
+                                <input type="text" name="direccion" class="w-[80%]" value="<?php echo $maestroInfo['direccion'] ?>"> </input>
+                            </div>
+
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
+                                <label for="">Fecha de Nacimiento:</label>
+                                <input type="date" name="fecha_nacimiento" class="w-[80%]" value="<?php echo $maestroInfo['fecha_nacimiento'] ?>"> </input>
+                            </div>
+
                             <div class="self-center">
                                 <button type="submit" class="px-2 py-1 rounded-md text-white mb-6 inline-block hover:text-black bg-slate-500">Guardar</button>
-                            </div>                  
-                    </form>
-                </div>
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
             </div>
-
-         
-         
-
-
         </div>
+        
         <footer class="bg-white p-1 w-full">
             <p> Copyright 2023 User-Manuel Donado. All rights reserved. </p>
         </footer>

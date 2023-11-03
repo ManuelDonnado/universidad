@@ -106,11 +106,11 @@ $user = $_SESSION["user"];
 
             <div class="flex flex-row justify-between m-10">
                 <div>
-                    <p>Editar Clases</p>
+                    <p>Editar Permisos del Usuario</p>
                 </div>
                 <div class="flex flex-row">
                     <a href="/src/views/dashboard.php">Home</a>
-                    <p>/ Clases</p>
+                    <p>/ Permisos</p>
                 </div>
             </div>
 
@@ -118,10 +118,10 @@ $user = $_SESSION["user"];
                 <div>
                     <div class="flex flex-row justify-between mx-5 p-3">
                         <div class="mx-6 my-4">
-                            <p> Información de las Clases </p>
+                            <p> Información de los Permisos del Usuario</p>
                         </div>
                         <div class="mx-6 my-4">
-                        <a href="/view_clases" class="bg-cyan-600  text-white px-2 rounded " > Cancelar Edición</a>
+                        <a href="/view_permisos" class="bg-cyan-600  text-white px-2 rounded " > Cancelar Edición</a>
                         </div>
                     </div>
        
@@ -130,39 +130,42 @@ $user = $_SESSION["user"];
                   
 
                     <div class="w-[97%] h-[50%] m-3">
-                    <form action="/update_clase" method="post" class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
-                            <input type="text" hidden name="id_clase" value="<?= $clase['id_clase'] ?>">
-                            
-
+                    <form action="/update_permiso" method="post" class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
+                            <input type="text" hidden name="id_usuario" value="<?= $permiso['id_usuario'] ?>">
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Materia Disponibles:</label>
-                            <select name="id_materia" id="id_materia" class="w-[80%] ">
+                                <label for="">Correo:</label>
+                                <input type="text" name="correo" class="w-[80%] "  value="<?php echo $permiso['correo'] ?>" readonly>
+                            </div>
+
+                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">        
+                                <label for="">Estatus:</label> 
+                                <select name="estatus">
                                 <?php
-                                foreach ($materias as $materia) {
-                                    if ($clase["id_materia"] === $materia["id_materia"]) {
-                                        echo "<option value= " . $materia['id_materia'] . " selected> " . $materia['nombre_materia'] . "</option>";
+                                    if ($permiso["estatus"] === 1) {
+                                        echo "<option value= '1' selected> Activo </option>";
+                                        echo "<option value= '0' > Inactivo </option>";
                                     } else {
-                                        echo "<option value=" . $materia['id_materia'] . " > " . $materia['nombre_materia'] . "</option>";
+                                        echo "<option value= '1' > Activo </option>";
+                                        echo "<option value= '0' selected> Inactivo </option>";
                                     }
-                                }   ?>
-                            </select>
+                                  ?> 
+                                </select>
                             </div>
 
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Maestros Disponibles:</label>
-                            <select name="id_maestro" id="id_maestro" class="w-[80%] ">
-                            <?php
-                                foreach ($maestros as $maestro) {
-                                    if ($clase["id_maestro"] === $maestro["id_usuario"]) {
-                                        echo "<option value= " . $maestro['id_usuario'] . " selected> " . $maestro['maestro'] . "</option>";
+                                <label for="">Permiso:</label>    
+                                <select name="id_rol">
+                                <?php
+                                foreach ($roles as $rol) {
+                                    if ($permiso["id_rol"] === $rol["id_rol"]) {
+                                        echo "<option value= " . $rol['id_rol'] . " selected> " . $rol['nombre_rol'] . "</option>";
                                     } else {
-                                        echo "<option value=" . $maestro['id_usuario'] . " > " . $maestro['maestro'] . "</option>";
+                                        echo "<option value=" . $rol['id_rol'] . " > " . $rol['nombre_rol'] . "</option>";
                                     }
                                 }   ?>
-                            </select>
-                            </div>
-                            
-        
+                                </select>
+
+                            </div>   
                             
                             <div class="self-center">
                                 <button type="submit" class="px-2 py-1 rounded-md text-white mb-6 inline-block hover:text-black bg-slate-500">Guardar</button>

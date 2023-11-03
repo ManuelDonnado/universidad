@@ -1,5 +1,4 @@
 <?php
-session_start();
 $user = $_SESSION["user"];
 ?>
 
@@ -55,7 +54,7 @@ $user = $_SESSION["user"];
                 </div>
 
                 <div class="flex flex-col m-3 text-[12px] text-white ">
-                    <a href="#"><i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i> Alumnos </a>
+                    <a href="/view_maestro_alumno"><i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i> Alumnos </a>
                 </div>
             </div>
         <?php  } elseif ($user['id_rol'] === 3) { ?>
@@ -65,8 +64,8 @@ $user = $_SESSION["user"];
                 </div>
 
                 <div class="flex flex-col m-3 text-[12px] text-white ">
-                    <a href="#"> <i class="fa-regular fa-file-lines" style="color: #89919f;"></i> Ver Calificaciones </a>
-                    <a href="#"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i> Administra tus clases</a>
+                    <a href="/view_calificaciones"> <i class="fa-regular fa-file-lines" style="color: #89919f;"></i> Ver Calificaciones </a>
+                    <a href="/view_clases_alumno"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i> Administra tus clases</a>
                 </div>
             </div>
         <?php }  ?>
@@ -87,7 +86,7 @@ $user = $_SESSION["user"];
                     </div>
                     <div id="dropdownContent" class="dropdown hidden mt-0 w-40 absolute right-0 ">
                         <div class="bg-white rounded-lg shadow-lg flex flex-col text-[14px]">
-                            <a href="#" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i> Perfil</a>
+                            <a href="/src/views/Perfil.php" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i> Perfil</a>
                             <a href="/logout" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
                         </div>
                     </div>
@@ -102,79 +101,127 @@ $user = $_SESSION["user"];
             }
         </script>
         <!-- contenido de la tabla -->
+
+
         <div class="bg-stone-100 flex-grow p-4">
 
             <div class="flex flex-row justify-between m-10">
                 <div>
-                    <p>Editar Clases</p>
+                    <p>Esquema de clases</p>
                 </div>
                 <div class="flex flex-row">
-                    <a href="/src/views/dashboard.php">Home</a>
+                <a href="/src/views/dashboard.php">Home</a>
                     <p>/ Clases</p>
                 </div>
             </div>
 
-            <div class="w-[90%] bg-white m-4 ">
+         <div class="flex flex-row justify-beetween " >
+            <div class="w-[50%] bg-white m-10 p-10 ">
                 <div>
                     <div class="flex flex-row justify-between mx-5 p-3">
                         <div class="mx-6 my-4">
-                            <p> Información de las Clases </p>
+                            <p>Tus Materias Inscritas</p>
                         </div>
                         <div class="mx-6 my-4">
-                        <a href="/view_clases" class="bg-cyan-600  text-white px-2 rounded " > Cancelar Edición</a>
+
                         </div>
                     </div>
-       
-                       
+
                     <hr>
-                  
+                    <div class="flex flex-row justify-between mx-5 p-3">
+                        <div>
+                           
+                        </div>
+                        <div>
+                           
+                        </div>
+                    </div>
 
-                    <div class="w-[97%] h-[50%] m-3">
-                    <form action="/update_clase" method="post" class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
-                            <input type="text" hidden name="id_clase" value="<?= $clase['id_clase'] ?>">
-                            
+                    <div class="w-[90%] h-[80%]">
+                        <table class="table-auto border-2 border-slate-500  m-10 ">
+                            <thead>
+                                <tr class="table-auto border-2 border-slate-500 items-center text-[18px]" >
+                                    <td class="w-64" > # </td>
+                                    <td class="w-64" > Materia </td>
+                                    <td class="w-64" > Maestro </td>
+                                    <td class="w-64" > Darse de Baja </td>
 
-                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Materia Disponibles:</label>
-                            <select name="id_materia" id="id_materia" class="w-[80%] ">
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                                foreach ($materias as $materia) {
-                                    if ($clase["id_materia"] === $materia["id_materia"]) {
-                                        echo "<option value= " . $materia['id_materia'] . " selected> " . $materia['nombre_materia'] . "</option>";
-                                    } else {
-                                        echo "<option value=" . $materia['id_materia'] . " > " . $materia['nombre_materia'] . "</option>";
-                                    }
-                                }   ?>
-                            </select>
-                            </div>
-
-                            <div class="flex gap-1 flex-row  items-center justify-between mx-10">
-                            <label for="">Maestros Disponibles:</label>
-                            <select name="id_maestro" id="id_maestro" class="w-[80%] ">
-                            <?php
-                                foreach ($maestros as $maestro) {
-                                    if ($clase["id_maestro"] === $maestro["id_usuario"]) {
-                                        echo "<option value= " . $maestro['id_usuario'] . " selected> " . $maestro['maestro'] . "</option>";
-                                    } else {
-                                        echo "<option value=" . $maestro['id_usuario'] . " > " . $maestro['maestro'] . "</option>";
-                                    }
-                                }   ?>
-                            </select>
-                            </div>
-                            
-        
-                            
-                            <div class="self-center">
-                                <button type="submit" class="px-2 py-1 rounded-md text-white mb-6 inline-block hover:text-black bg-slate-500">Guardar</button>
-                            </div>                  
-                    </form>
-                </div>
-
+                                $contador = 1;
+                                foreach ($data as $clases) { ?>
+                                    <tr>
+                                        <td><?php echo $contador; ?></td>
+                                        <td><?php echo $clases['nombre_materia']; ?></td>
+                                        <td><?php echo $clases['maestro']; ?></td>
+                                        <td><a href="/borrar_clase_alumno?id_clase_alumno=<?= $clases["id_clase_alumno"] ?>"><i class="fa-solid fa-trash-can" style="color: #f22c2c;"></i></a> </td>
+                                    </tr>
+                                <?php $contador++;
+                                } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+          
+            <div class="w-[50%] bg-white m-10 p-10 ">
+                <div>
+                    <div class="flex flex-row justify-between mx-5 p-3">
+                        <div class="mx-6 my-4">
+                            <p>Materias para Inscribir</p>
+                        </div>
+                        <div class="mx-6 my-4">
 
-         
-         
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="flex flex-row justify-between mx-5 p-3">
+                        <div>
+                           
+                        </div>
+                        <div>
+                        
+                        </div>
+                    </div>
+
+                    <div class="w-[80%] h-[50%]">
+                        <table class="table-auto border-2 border-slate-500  m-10 ">
+                            <thead>
+                                <tr class="table-auto border-2 border-slate-500 items-center text-[18px]" >
+                                    <td  class="w-64" > # </td>
+                                    <td  class="w-64" > Materia </td>
+                                    <td  class="w-64" > Maestro </td>
+                                    <td  class="w-64" > Incribirse </td>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $contador = 1;
+                                foreach ($dataDis as $clasesDis) { ?>
+                                    <tr>
+                                        <td><?php echo $contador; ?></td>
+                                        <td><?php echo $clasesDis['nombre_materia']; ?></td>
+                                        <td><?php echo $clasesDis['maestro']; ?></td>
+                                        <td> <a href="/agregar_clase?id_clase=<?= $clasesDis["id_clase"] ?>"> <i class="fa-solid fa-circle-plus" style="color: #0f62f0;"></i></a> </td>
+                                    </tr>
+                                <?php $contador++;
+                                } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+
+
+
+
 
 
         </div>

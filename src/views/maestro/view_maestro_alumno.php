@@ -1,5 +1,4 @@
 <?php
-session_start();
 $user = $_SESSION["user"];
 ?>
 
@@ -53,7 +52,7 @@ $user = $_SESSION["user"];
             </div>
 
             <div class="flex flex-col m-3 text-[12px] text-white ">
-               <a href="#"><i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
+               <a href="/view_clase_maestro"><i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
             </div>
         </div>
     <?php  }  elseif ($user['id_rol'] === 3){ ?>
@@ -104,10 +103,10 @@ $user = $_SESSION["user"];
     
                 <div class="flex flex-row justify-between m-10" >
                     <div>
-                    <p>Lista de Permisos </p>
+                    <p>Alumnos de la Clase de <?php echo $materia; ?> </p>
                     </div>
                     <div class="flex flex-row" >
-                    <a href="/src/views/dashboard.php">Home</a> <p>/ Permisos</p> 
+                    <a href="/src/views/dashboard.php">Home</a> <p>/<?php echo $materia; ?></p> 
                     </div>
                 </div>
             
@@ -115,11 +114,9 @@ $user = $_SESSION["user"];
             <div>
                 <div class="flex flex-row justify-between mx-5 p-3">
                     <div class="mx-6 my-4" >
-                         <p>Información de Permisos</p>
+                         <p>Alumnos de Clase <?php echo $materia; ?> </p> 
                     </div>
-                    <div class="mx-6 my-4">
-                        <a href="#"></a>
-                    </div>   
+                    
                 </div>
                 <hr>
                 <div class="flex flex-row justify-between mx-5 p-3">
@@ -134,46 +131,35 @@ $user = $_SESSION["user"];
                 </div>
 
                 <div class="w-[97%] h-[50%] m-3" >
-                    <table class="table-auto border-2 border-slate-500  ">
-                    <thead class=" " >    
+                    <table class="  border-solid border-2 border-slate-500  ">
+                    <thead>    
                         <tr class="table-auto border-2 border-slate-500 items-center text-[18px]" >
-                            <td class="w-64"  > # </td>
-                            <td  class="w-96">Email / Usuario</td>
-                            <td class="w-64" > Permiso </td>
-                            <td  class="w-64"> Estado </td>
-                            <td  class="w-64"> Acciones </td>
+                            <td class="w-64"> # </td>
+                            <td class="w-64">Nombre de Alumno</td>
+                            <td class="w-64">Materia</td>
+                            <td class="w-96"> Calificación </td>
+                            <td class="w-96"> Mensajes </td>
+                            <td class="w-64"> Acciones </td>
                         </tr>
                     </thead>    
                     <tbody>
+                    
+                    </tbody>
                     <?php
-                    $contador = 1; 
-                    foreach ($data as $permisos) { ?>
-                    <tr class="table-auto border-2 border-slate-500 items-center  " >
-                        <td><?php echo $contador; ?></td>
-                        <td><?php echo $permisos['correo']; ?></td>
-                        <td ><?php if ($permisos['nombre_rol'] == 'Administrador') { ?>
-                            <span class="text-black bg-amber-400  rounded px-2" >Administrador</span>
-                   <?php } else if ($permisos['nombre_rol'] == 'Maestro'){ ?>
-                         <span class="text-white bg-cyan-600 rounded px-2  " >Maestro</span>
-                   <?php  } else { ?>
-                         <span class="text-white bg-slate-700 rounded px-2  " >Alumno</span>
-                   <?php  } ?>
-        </td>
-
-                        <td ><?php if ($permisos['estatus'] == 1) { ?>
-                            <span class="text-white bg-green-700  rounded px-2" >Activo</span>
-                   <?php } else { ?>
-                         <span class="text-white bg-red-600 rounded px-2  " >Inactivo</span>
-                   <?php  } ?>
-        </td>
-                        <td> 
-                            <a href="/edit_permiso?id_usuario=<?= $permisos["id_usuario"] ?>" class="px-2 rounded "> <i class="fa-solid fa-pen-to-square mx-3" style="color: #50c9f2;"></i> </a> </td>
-                    </tr>
-                <?php  $contador++;  
-                } ?>
-                  
-                    </tbody> 
-
+                         $contador = 1; 
+                        foreach ($data as $clase) { ?>
+                        <tr>
+                            <td><?php echo $contador; ?></td>
+                            <td><?php echo $clase['alumno']; ?></td>
+                            <td><?php echo $clase['nombre_materia']; ?></td>
+                            <td><?php echo $clase['calificacion']; ?></td>
+                            <td><?php echo $clase['comentarios']; ?></td>
+                            <td>  <a href="/edit_calificacion?id_clase=<?= $clase["id_clase"] ?>"> <i class="fa-solid fa-clipboard-list" style="color: #50c9f2;"></i> </a>   
+                            <a href="/edit_mensajes?id_clase=<?= $clase["id_clase"] ?>"><i class="fa-solid fa-paper-plane" style="color: #50c9f2;"></i></a>   
+                            </td>
+                        </tr>
+                        <?php  $contador++;  
+                        } ?>
 
                     </table>
                 </div>

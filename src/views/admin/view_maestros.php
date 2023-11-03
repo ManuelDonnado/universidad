@@ -41,7 +41,7 @@ $user = $_SESSION["user"];
             <div class="flex flex-col m-3 text-[12px] text-white " >
             <a href="/view_permisos"> <i class="fa-solid fa-user-gear" style="color: #89919f;"></i>   Permisos </a> 
                <a href="/view_maestros"> <i class="fa-solid fa-chalkboard-user" style="color: #89919f;"></i>   Maestros</a>
-               <a href="/alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
+               <a href="/view_alumnos">  <i class="fa-solid fa-graduation-cap" style="color: #89919f;"></i>   Alumnos </a> 
                 <a href="/view_materias"> <i class="fa-solid fa-book" style="color: #89919f;"></i>   Materias</a>
                 <a href="/view_clases"> <i class="fa-solid fa-clipboard-user" style="color: #89919f;"></i>   Clases </a>
             </div>
@@ -85,8 +85,8 @@ $user = $_SESSION["user"];
                 </div>
                 <div id="dropdownContent" class="dropdown hidden mt-0 w-40 absolute right-0 ">
                     <div class="bg-white rounded-lg shadow-lg flex flex-col text-[14px]">
-                        <a href="#" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i>  Perfil</a>
-                        <a href="./logout.php" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
+                        <a href="/src/views/Perfil.php" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-circle-user mr-3" style="color: #89919f;"></i>  Perfil</a>
+                        <a href="/logout" class="block px-4 py-2 mx-4 text-gray-800"> <i class="fa-solid fa-door-open text-red-600 mr-3" style="color: #ed0202;"></i> Logout</a>
                     </div>
                 </div>
             </div>
@@ -107,7 +107,7 @@ $user = $_SESSION["user"];
                     <p>Lista de Maestros </p>
                     </div>
                     <div class="flex flex-row" >
-                    <a href="../dashboard.php">Home</a> <p>/ Maestros</p> 
+                    <a href="/src/views/dashboard.php">Home</a> <p>/ Maestros</p> 
                     </div>
                 </div>
             
@@ -118,7 +118,7 @@ $user = $_SESSION["user"];
                          <p>Información de Maestros</p>
                     </div>
                     <div class="mx-6 my-4">
-                        <a href="#" id="openModal" class="text-blue-500" > Agregar Maestro</a>
+                    <button type="button"  id="openModal" class="bg-cyan-600  text-white px-2 rounded " >  Agregar Maestro</button> 
                     </div>   
                 </div>
 
@@ -134,38 +134,38 @@ $user = $_SESSION["user"];
                                     &times;
                                 </div>
                             </div>
-                        <form action="/create_maestro" method="post"  class="w-[350px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
+                        <form action="/create_maestro" method="post"  class="w-[700px] flex flex-col rounded-md py-4 gap-5 bg-slate-200">
                        
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                             <label for="">Nombre:</label>
-                            <input type="text" name="nombre" class="w-[50%] ">
+                            <input type="text" name="nombre" class="w-[80%]  ">
                             </div>
 
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                             <label for="">Apellido:</label>
-                            <input type="text" name="apellido" class="w-[50%] ">
+                            <input type="text" name="apellido" class="w-[80%]  ">
                             </div>
                         
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                             <label for="">Correo:</label>
-                            <input type="text" name="correo" class="w-[50%] ">
+                            <input type="text" name="correo" class="w-[80%]  ">
                             </div>
                         
 
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                 <label for="">Contraseña:</label>
-                                <input type="password" name="password" class="w-[50%]">
+                                <input type="password" name="password" class="w-[80%] ">
                             </div>
 
                     
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                 <label for="">Dirección:</label>
-                                <input type="text" name="direccion" class="w-[50%]" > </input>
+                                <input type="text" name="direccion" class="w-[80%] " > </input>
                             </div>
                             
                             <div class="flex gap-1 flex-row  items-center justify-between mx-10">
                                 <label for="">Fecha de Nacimiento:</label>
-                                <input type="date" name="fecha_nacimiento" class="w-[50%]" > </input>
+                                <input type="date" name="fecha_nacimiento" class="w-[80%] " > </input>
                             </div>
 
                             <div class="self-center">
@@ -197,22 +197,22 @@ $user = $_SESSION["user"];
                     </div>
                     <div>
                         <label for="">Search:</label>
-                        <input type="text" class="border-2 border-black
+                        <input type="text" class="border-2 border-slate-500 
                         "> </input>
                     </div>
                 </div>
 
-                <div class="w-[80%] h-[50%]" >
-                    <table class="  border-solid border-2 border-black ">
+                <div class="w-[97%] h-[50%] m-3" >
+                    <table class="  border-solid border-2 border-slate-500 ">
                     <thead>    
-                        <tr>
-                            <td> # </td>
-                            <td> Nombre </td>
-                            <td> Correo </td>
-                            <td> Dirección </td>
-                            <td> Fecha de Nacimiento </td>
-                            <td> Clase Asignada </td>
-                            <td> Acciones </td>
+                        <tr class="table-auto border-2 border-slate-500 items-center text-[18px]"  >
+                            <td class="w-64"> # </td>
+                            <td class="w-96" > Nombre </td>
+                            <td class="w-64" > Correo </td>
+                            <td class="w-96"> Dirección </td>
+                            <td class="w-64" > Fecha de Nacimiento </td>
+                            <td class="w-64"> Clase Asignada </td>
+                            <td class="w-64"> Acciones </td>
                         </tr>
                     </thead>    
                     <tbody>
@@ -227,7 +227,10 @@ $user = $_SESSION["user"];
                             <td><?php echo $maestro['correo']; ?></td>
                             <td><?php echo $maestro['direccion']; ?></td>
                             <td><?php echo $maestro['fecha_nacimiento']; ?></td>
-                            <td> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </td> <!-- Agrega las acciones que correspondan -->
+                            <td> <?php echo $maestro['nombre_materia']; ?></td>
+                            <td>  <a href="/edit_maestro?id_maestro=<?= $maestro["id_usuario"] ?>"> <i class="fa-solid fa-pen-to-square" style="color: #50c9f2;"></i> </a>   
+                            <a href="/borrar_maestro?id_maestro=<?= $maestro["id_usuario"] ?>"><i class="fa-solid fa-trash-can" style="color: #f22c2c;"></i></a>
+                            </td> <!-- Agrega las acciones que correspondan -->
                         </tr>
                         <?php  $contador++;  
                         } ?>
